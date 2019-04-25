@@ -1,7 +1,7 @@
 
 .feed-container {
-  font-family: 'Helvetica';
-  color: #496B82;
+  font-family: 'Source Sans Pro';
+  color: #003b5b;
   position: fixed;
   right: 0;
   top: 0;
@@ -52,20 +52,20 @@ p {
   border-bottom: 1px solid #E8E8E8;
   padding: 20px;
   background: white;
-  color: #383838;
+  color: #003b5b;
   padding-bottom: 30px;
 }
 
 .item > h3 {
-  font-size: 22px;
+  font-size: 26px;
   margin: 5px 0 10px 0;
   color: #1167FA;
-  font-weight: semi-bold;
+  font-weight: bold;
 }
 
 
 .item > p {
-  font-size: 16px;
+  font-size: 18px;
   margin: 12px 0 12px 0;
 }
 
@@ -80,7 +80,7 @@ p {
   margin: 0 0 0 0;
   padding: 2px 0;
   width: 100%;
-  background: #276AF1;
+  background: #003b5b;
   display: flex;
   justify-content: space-between;
 }
@@ -102,7 +102,7 @@ p {
 
 .item-date {
   color: #9AAEBC;
-  font-size: 14px;
+  font-size: 16px;
   margin: 5px 0;
 }
 
@@ -115,7 +115,7 @@ p {
 .item-badge {
   line-height: 10px;
   margin: auto 0;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   text-transform: uppercase;
   padding: 4px 8px;
@@ -135,7 +135,7 @@ p {
   background: #00e399;
   border-radius: 4px;
   font-family: Helvetica-Bold;
-  font-size: 14px;
+  font-size: 16px;
   color: #4A4A4A;
   padding: 6px 14px;
   text-align: center;
@@ -162,13 +162,13 @@ p {
 
 .item-footer > div > p  {
   color: #9AAEBC;
-  font-size: 14px;
+  font-size: 16px;
   margin: 5px 0;
 }
 
 .item-footer > div >  div > button {
   outline: none;
-  font-size: 24px;
+  font-size: 26px;
   background: transparent;
   color: white;
   height: 100%;
