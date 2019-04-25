@@ -72,8 +72,8 @@ const addFeedItem = (record, feed, apiKey, base, table) => {
     if(record.link) {
       const link = build('a', [
         { name: 'href', value: record.link },
-        { name: "target": value: '_blank' },
-        { name: "rel": value: "noopener noreferrer"},
+        { name: "target", value: '_blank' },
+        { name: "rel", value: "noopener noreferrer"},
       ], 'Read more');
       footer.appendChild(link);
     }
