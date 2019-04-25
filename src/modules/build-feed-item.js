@@ -9,7 +9,7 @@ const tag = {
   },
 }
 
-const sendReaction = (event, apiKey, table, base) => {
+const sendReaction = (event, apiKey, table, airBase) => {
 
   const { attributes } = event.srcElement;
   const recordId = attributes['data-record-id'].value;
