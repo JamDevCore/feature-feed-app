@@ -9,9 +9,7 @@ const closeFeed = (origin) => {
   const button = document.querySelector('.feed-closeButton');
 // where to send messages with postMessage
   const target_origin = origin
-  button.addEventListener('click', () => {
-    parent.postMessage({'task': 'close'}, target_origin);
-  })
+  parent.postMessage({'task': 'close'}, target_origin);
 }
 
 (function initFeed() {
