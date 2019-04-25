@@ -98,6 +98,7 @@ p {
   border: none;
   font-size: 24px;
   padding: 0 15px;
+  margin-right: 5px;
 }
 
 .item-date {
@@ -114,7 +115,7 @@ p {
 
 .item-badge {
   line-height: 10px;
-  margin: auto 0;
+  margin: auto 5px;
   font-size: 12px;
   color: white;
   text-transform: uppercase;
@@ -140,7 +141,7 @@ p {
   padding: 6px 14px;
   text-align: center;
   position: relative;
-  bottom: -28px;
+  bottom: -33px;
   max-height: 18px;
   color: white;
   text-decoration: none;
@@ -151,13 +152,20 @@ p {
 }
 
 .item-footer > div  {
-  max-height: 40px;
-  max-width: 120px;
+  height: 50px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   text-align: center;
   margin-left: auto;
-  margin-right: 0;
+  margin-right: 5px;
+}
+.item-footer > div > div {
+  width: 100%;
+  margin-top: 5px;
+  height: 50px;
+  display:flex;
+  justify-content: space-between;
 }
 
 .item-footer > div > p  {
