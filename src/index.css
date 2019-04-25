@@ -60,12 +60,13 @@ p {
   font-size: 26px;
   margin: 5px 0 10px 0;
   color: #1167FA;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 
 .item > p {
-  font-size: 18px;
+  font-size: 16px;
+  letter-spacing: 0.25px;
   margin: 12px 0 12px 0;
 }
 
@@ -119,9 +120,9 @@ p {
   font-size: 12px;
   color: white;
   text-transform: uppercase;
-  padding: 4px 8px;
+  padding: 4px 12px;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .item-footer {
@@ -135,10 +136,10 @@ p {
 .item-footer > a {
   background: #00e399;
   border-radius: 4px;
-  font-family: Helvetica-Bold;
   font-size: 16px;
   color: #4A4A4A;
-  padding: 6px 14px;
+  line-height: 16px;
+  padding: 8px 14px;
   text-align: center;
   position: relative;
   bottom: -33px;
