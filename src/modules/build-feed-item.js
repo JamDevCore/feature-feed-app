@@ -70,7 +70,11 @@ const addFeedItem = (record, feed, apiKey, base, table) => {
       item.appendChild(text);
     }
     if(record.link) {
-      const link = build('a', [{ name: 'href', value: record.link }], 'Read more');
+      const link = build('a', [
+        { name: 'href', value: record.link },
+        { name: "target": value: '_blank' },
+        { name: "rel": value: "noopener noreferrer"},
+      ], 'Read more');
       footer.appendChild(link);
     }
     if(record.reactions) {
