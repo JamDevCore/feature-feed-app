@@ -14,27 +14,18 @@ const sendReaction = (event, apiKey, table, airBase) => {
   const { attributes } = event.srcElement;
   const recordId = attributes['data-record-id'].value;
   const elementId = attributes.id.value;
-  const currentValue = (attributes.value && attributes.value.value) || 0;
-  const reactionType = attributes['data-reaction-type'].value;
-  document.querySelector(`#${elementId}`).setAttribute('class', 'reaction-button selected');
-  document.querySelector(`#good-reactions-${recordId}`).setAttribute('disabled', true);
-  document.querySelector(`#bad-reactions-${recordId}`).setAttribute('disabled', true);
-
-
+  const heart = document.querySelector(`#${elementId}`)
+  heart.setAttribute('class', 'reaction-button selected');
+  heart.setAttribute('disabled', true);
+  heart.innerHTML = '&#9829;';
+  const newValue = (parseInt(heart['data-record-value']) || 0) + 1;
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey }).base(airBase);
-  const newTotal = parseInt(currentValue) + 1;
-
-  console.log(newTotal)
-  console.log(attributes['data-record-id'].value)
 
   base(table).update(recordId, {
-    [reactionType]: newTotal,
+    'hearts': newValue,
   }, function(err, record) {
     if (err) { console.error(err); return; }
-    document.querySelector(`#${elementId}`).value = record.fields[reactionType];
-
-    console.log(document.querySelector(`#${elementId}`).value)
   });
 }
 
@@ -77,36 +68,22 @@ const addFeedItem = (record, feed, apiKey, base, table) => {
       ], 'Read more');
       footer.appendChild(link);
     }
-    if(record.reactions) {
-      const thumbsup = build('button', [
-        { name: 'class', value: 'reaction-button'},
-        { name: 'id', value: `good-reactions-${record._id}`},
-        { name: 'data-reaction-type', value: 'good-reactions'},
-        { name: 'value', value: record['good-reactions']},
-        { name: 'data-record-id', value: record._id},
-      ],'&#x1f44d;');
-      const thumbsdown = build('button', [
-        { name: 'class', value: 'reaction-button'},
-        { name: 'id', value: `bad-reactions-${record._id}`},
-        { name: 'data-reaction-type', value: 'bad-reactions'},
-        { name: 'value', value: record['bad-reactions']},
-        { name: 'data-record-id', value: record._id},
-      ],'&#x1f44e;');
-
-      const rateContainer = build('div', [{ name: 'class', value: 'rate-container'}]);
-      const rateText = build('p', [], 'Rate this!');
-      const rateButtons = build('div', []);
-
-      rateContainer.appendChild(rateText);
-      rateContainer.appendChild(rateButtons);
-
-      rateButtons.appendChild(thumbsup)
-      rateButtons.appendChild(thumbsdown)
-
-      footer.appendChild(rateContainer);
-      thumbsup.addEventListener('click', (e) => sendReaction(e, apiKey, table, base))
-      thumbsdown.addEventListener('click', (e) => sendReaction(e, apiKey, table, base))
-    }
+    // if(record.reactions) {
+    //   const heart = build('button', [
+    //     { name: 'class', value: 'reaction-button'},
+    //     { name: 'id', value: `heart-${record._id}`},
+    //     { name: 'data-record-id', value: record._id},
+    //     { name: 'data-record-value', value: record.reactions },
+    //   ],'&#9825;');
+    //
+    //   const rateContainer = build('div', [{ name: 'class', value: 'rate-container'}]);
+    //   const rateButtons = build('div', []);
+    //
+    //   rateContainer.appendChild(heart);
+    //
+    //   footer.appendChild(rateContainer);
+    //   heart.addEventListener('click', (e) => sendReaction(e, apiKey, table, base))
+    // }
     item.appendChild(footer);
     feed.appendChild(item);
   } catch (exception) {

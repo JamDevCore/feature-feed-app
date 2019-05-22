@@ -132,7 +132,6 @@ p {
   height: auto;
   width: 100%;
   position: relative;
-  margin-bottom: 20px;
 }
 .item-footer > a {
   background: #00e399;
@@ -143,10 +142,10 @@ p {
   padding: 8px 14px;
   text-align: center;
   position: relative;
-  bottom: -33px;
   max-height: 18px;
   color: white;
   text-decoration: none;
+  margin: 20px 0px 0px 0px;
 }
 
 .item-footer > a:hover {
@@ -176,11 +175,12 @@ p {
   margin: 5px 0;
 }
 
-.item-footer > div >  div > button {
+.reaction-button {
+  margin-top: 12px;
   outline: none;
-  font-size: 26px;
+  font-size: 40px;
   background: transparent;
-  color: white;
+  color: black;
   height: 100%;
   margin-bottom: 0;
   cursor: pointer;
@@ -188,10 +188,6 @@ p {
   transition: font-size 0.2s;
 }
 
-.item-footer > div >  div > button:hover {
-  font-size: 32px;
-}
-
 .selected {
-  font-size: 32px !important;
+  font-size: 54px;
 }
