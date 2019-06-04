@@ -2,7 +2,7 @@
   "name": "feature-feed",
   "version": "1.1.0",
   "description": "Describe feature-feed here",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "nwb build-web-app",
     "clean": "nwb clean-app",

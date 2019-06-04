@@ -9,16 +9,8 @@ const tag = {
   },
 }
 
-const sendReaction = (event, apiKey, table, airBase) => {
-
-  const { attributes } = event.srcElement;
-  const recordId = attributes['data-record-id'].value;
-  const elementId = attributes.id.value;
-  const heart = document.querySelector(`#${elementId}`)
-  heart.setAttribute('class', 'reaction-button selected');
-  heart.setAttribute('disabled', true);
-  heart.innerHTML = '&#9829;';
-  const newValue = (parseInt(heart['data-record-value']) || 0) + 1;
+const sendReaction = (recordId, recordValue,apiKey, table, airBase) => {
+  const newValue = (parseInt(recordValue) || 0) + 1;
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey }).base(airBase);
 
@@ -68,22 +60,49 @@ const addFeedItem = (record, feed, apiKey, base, table) => {
       ], 'Read more');
       footer.appendChild(link);
     }
-    // if(record.reactions) {
-    //   const heart = build('button', [
-    //     { name: 'class', value: 'reaction-button'},
-    //     { name: 'id', value: `heart-${record._id}`},
-    //     { name: 'data-record-id', value: record._id},
-    //     { name: 'data-record-value', value: record.reactions },
-    //   ],'&#9825;');
-    //
-    //   const rateContainer = build('div', [{ name: 'class', value: 'rate-container'}]);
-    //   const rateButtons = build('div', []);
-    //
-    //   rateContainer.appendChild(heart);
-    //
-    //   footer.appendChild(rateContainer);
-    //   heart.addEventListener('click', (e) => sendReaction(e, apiKey, table, base))
-    // }
+    if(record.reactions) {
+      const heart = build('div', [
+        { name: 'class', value: 'reaction-button lottie'},
+        { name: 'id', value: `heart-${record._id}`},
+        { name: 'data-record-id', value: record._id},
+        { name: 'data-record-value', value: record.hearts },
+      ]);
+      const rateContainer = build('div', [{ name: 'class', value: 'rate-container'}]);
+      const rateButtons = build('div', []);
+
+      rateContainer.appendChild(heart);
+      const data = 'https://assets1.lottiefiles.com/datafiles/d9bc9kYC2VttaKb/data.json';
+      let isActive = false
+
+      const animation = bodymovin.loadAnimation({
+        container: heart,
+        path: data,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+      });
+
+      heart.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (isActive) {
+          heart.classList.remove('is-active');
+          animation.stop();
+        } else {
+
+          heart.classList.add('is-active');
+          setTimeout(() => {
+            animation.play();
+          }, 20);
+        }
+        isActive = !isActive
+      });
+
+      animation.addEventListener('complete', e => {
+        animation.stop();
+      })
+      footer.appendChild(rateContainer);
+      heart.addEventListener('click', (e) => sendReaction(record._id, record.hearts, apiKey, table, base))
+    }
     item.appendChild(footer);
     feed.appendChild(item);
   } catch (exception) {
